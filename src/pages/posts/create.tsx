@@ -7,8 +7,8 @@ interface createProps {
 	date: string
 }
 
-const create: FC<createProps> = () => {
+const Create: FC<createProps> = () => {
 	return <div>create</div>
 }
 
-export default create
+export default Create

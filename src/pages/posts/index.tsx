@@ -7,8 +7,8 @@ interface postProps {
 	date: string
 }
 
-const post: FC<postProps> = () => {
+const Post: FC<postProps> = () => {
 	return <div>post</div>
 }
 
-export default post
+export default Post

@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 interface postDetailsProps {}
 
-const postDetails: FC<postDetailsProps> = () => {
+const PostDetails: FC<postDetailsProps> = () => {
 	const router = useRouter()
 
 	return (
@@ -15,4 +15,4 @@ const postDetails: FC<postDetailsProps> = () => {
 	)
 }
 
-export default postDetails
+export default PostDetails

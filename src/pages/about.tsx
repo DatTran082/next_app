@@ -5,7 +5,7 @@ import { log } from 'console'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function about() {
+export default function About() {
 	const [filters, setFilter] = useState(null)
 
 	useEffect(() => {

@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 interface slugProps {}
 
-const slug: FC<slugProps> = () => {
+const Slug: FC<slugProps> = () => {
 	const router = useRouter()
 	return (
 		<>
@@ -13,4 +13,4 @@ const slug: FC<slugProps> = () => {
 	)
 }
 
-export default slug
+export default Slug
