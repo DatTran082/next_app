@@ -1,16 +1,24 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
-import { log } from 'console'
+import { useRouter } from 'next/router'
 
-const inter = Inter({ subsets: ['latin'] })
+interface IaboutProps {
+	props: {
+		data: any
+		message: string
+		code: number
+	}
+}
 
-export default function About() {
-	const [filters, setFilter] = useState(null)
+export default function About(props: IaboutProps) {
+	const router = useRouter()
 
-	useEffect(() => {
-		console.log(filters)
-	}, [filters])
+	console.log('About query: ', JSON.stringify(router.query))
+	console.log('props: ', JSON.stringify(props))
+
+	// useEffect(() => {
+	// 	console.log('props: ', JSON.stringify(props))
+	// }, [props])
 
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -52,4 +60,14 @@ export default function About() {
 			</div>
 		</main>
 	)
+}
+
+export async function getServerSideProps() {
+	return {
+		props: {
+			data: 'data',
+			message: 'success',
+			code: parseInt('2'),
+		},
+	}
 }
