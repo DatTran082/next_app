@@ -21,6 +21,7 @@ export default function PostDetails({ post }: postDetailsProps) {
 
 	return (
 		<div style={{}}>
+			<h1>data from static side</h1>
 			<h1>{post.title}</h1>
 			{post.imageUrl && <img src={post.imageUrl} alt={post.title} />}
 			<p>{post.description}</p>

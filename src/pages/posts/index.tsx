@@ -32,7 +32,7 @@ export default function Post(props: PostListPageProps) {
 
 	return (
 		<div style={{ margin: 'auto' }}>
-			<h1>post</h1>
+			<h1>data from static side</h1>
 			{props.posts.map((post) => (
 				<div key={post.id}>
 					<Link href={`/posts/${post.id}`}>
