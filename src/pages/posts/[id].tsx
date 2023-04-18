@@ -2,48 +2,60 @@ import { GetStaticPaths, GetStaticPathsContext, GetStaticProps, GetStaticPropsCo
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 
-interface postDetailsProps {}
+interface postDetailsProps {
+	post: {
+		id: string
+		title: string
+		author: string
+		description: string
+		createdAt: string
+		updatedAt: string
+		imageUrl: string
+	}
+}
 
-export default function PostDetails(props: postDetailsProps) {
+export default function PostDetails({ post }: postDetailsProps) {
 	const router = useRouter()
 
-	return (
-		<>
-			<h1>Post Detailts Page</h1>
+	if (!post) return null
 
-			<p>Query: {JSON.stringify(router.query)}</p>
-		</>
+	return (
+		<div style={{}}>
+			<h1>{post.title}</h1>
+			{post.imageUrl && <img src={post.imageUrl} alt={post.title} />}
+			<p>{post.description}</p>
+			<h3>{post.author}</h3>
+			<p>{new Date(post.createdAt).toDateString()}</p>
+		</div>
 	)
 }
 
 export const getStaticPaths: GetStaticPaths = async (context: GetStaticPathsContext) => {
-	//serverside
-	//buildtime
-	// const response = await fetch('https://dummyjson.com/posts')
 	const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1')
 	const data = await response.json()
 	const posts = data.data
 
+	const paths = posts.map((post: any) => ({
+		params: { id: post.id },
+	}))
+
 	return {
-		paths: [
-			{ params: { id: '1' } },
-			{ params: { id: '2' } },
-			{ params: { id: '3' } },
-			{ params: { id: '4' } },
-			{ params: { id: '5' } },
-		],
+		paths: paths,
 		fallback: false,
 	}
 }
 
 export const getStaticProps: GetStaticProps<postDetailsProps> = async (context: GetStaticPropsContext) => {
-	const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1')
-	const data = await response.json()
-	const posts = data.data
+	const postId = context.params?.id
+
+	if (!postId) return { notFound: true }
+
+	const response = await fetch(`https://js-post-api.herokuapp.com/api/posts/${postId}`)
+	const res = await response.json()
 
 	return {
 		props: {
-			posts: posts,
+			post: res,
 		},
 	}
 }
