@@ -7,10 +7,10 @@ export default class encrypt {
 	}
 
 	public static TrippleDes(rawData: string, privateKey: string): string {
-		return ''
+		return Buffer.from(rawData, 'binary').toString('base64')
 	}
 
 	public static SHA256WithRSA(rawData: string, privateKey: string): string {
-		return ''
+		return Buffer.from(rawData, 'binary').toString('base64')
 	}
 }

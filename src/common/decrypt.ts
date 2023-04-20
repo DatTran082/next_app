@@ -6,11 +6,11 @@ export default class decrypt {
 		return Buffer.from(toDecrypt, 'base64').toString('binary')
 	}
 
-	public static TrippleDes(rawData: string, privateKey: string): string {
-		return ''
+	public static TrippleDes(toDecrypt: string, privateKey: string): string {
+		return Buffer.from(toDecrypt, 'base64').toString('binary')
 	}
 
 	public static Verify(signature: string, publicKey: string): string {
-		return ''
+		return Buffer.from(signature, 'base64').toString('binary')
 	}
 }
