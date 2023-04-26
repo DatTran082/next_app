@@ -7,8 +7,6 @@ import { request } from '@/model/request'
 import { response } from '@/model/response'
 import { NextPage } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
-
 const Home: NextPage = () => {
 	const router = useRouter()
 
@@ -28,15 +26,7 @@ const Home: NextPage = () => {
 				className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
 				onClick={detailPage}
 			>
-				By{' '}
-				<Image
-					src="/vercel.svg"
-					alt="Vercel Logo"
-					className="dark:invert"
-					width={100}
-					height={24}
-					priority
-				/>
+				By <Image src="/vercel.svg" alt="Vercel Logo" className="dark:invert" width={100} height={24} priority />
 			</button>
 		</div>
 	)
