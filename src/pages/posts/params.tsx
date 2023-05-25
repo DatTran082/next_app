@@ -34,7 +34,7 @@ export default function Params(props: PostListPageProps) {
 	return (
 		<div style={{ margin: 'auto' }}>
 			<h1>data from static side</h1>
-			{props.posts.map((post) => (
+			{props.posts?.map((post) => (
 				<div key={post.id}>
 					<Link href={`/posts/${post.id}`}>
 						{' '}
