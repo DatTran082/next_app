@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext, GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -50,10 +50,12 @@ export default function Params(props: PostListPageProps) {
 	)
 }
 
-export async function GetServerSideProps() {
+export async function GetServerSideProps(context: GetServerSidePropsContext) {
 	//serverside
 	//buildtime
 	// const response = await fetch('https://dummyjson.com/posts')
+	context.res.setHeader('Cache-Control', 's-maxage=5')
+
 	const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1')
 	const data = await response.json()
 	const posts = data.data
