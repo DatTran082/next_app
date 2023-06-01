@@ -3,9 +3,10 @@ import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { NextPage } from 'next'
+import { MainLayout } from '@/layout'
+import { NextPageWithLayout } from '@/models'
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
 	const router = useRouter()
 
 	const detailPage = () => {
@@ -29,5 +30,7 @@ const Home: NextPage = () => {
 		</div>
 	)
 }
+
+Home.Layout = MainLayout
 
 export default Home

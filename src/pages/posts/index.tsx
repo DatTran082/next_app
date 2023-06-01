@@ -1,3 +1,5 @@
+import { MainLayout } from '@/layout'
+import { NextPageWithLayout } from '@/models'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -17,7 +19,7 @@ interface PostListPageProps {
 	]
 }
 
-export default function Post(props: PostListPageProps) {
+export function Post(props: PostListPageProps & NextPageWithLayout) {
 	const router = useRouter()
 
 	const detailPage = (id: string) => {
@@ -49,6 +51,8 @@ export default function Post(props: PostListPageProps) {
 	)
 }
 
+Post.Layout = MainLayout
+
 export const getStaticProps: GetStaticProps<PostListPageProps> = async (context: GetStaticPropsContext) => {
 	const page = context.params?.page || 1
 	// const response = await fetch('https://dummyjson.com/posts')
@@ -64,3 +68,5 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (context:
 		revalidate: 5,
 	}
 }
+
+export default Post

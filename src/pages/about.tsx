@@ -2,6 +2,8 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { Router, useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
+import MainLayout from '@/layout/main'
+import { log } from 'console'
 
 const Header = dynamic(() => import('@/components/common/Header'), { ssr: false })
 
@@ -61,6 +63,8 @@ export default function About({ props }: any) {
 		</main>
 	)
 }
+
+About.Layout = MainLayout
 
 // export async function getServerSideProps() {
 // 	return {
