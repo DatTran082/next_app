@@ -17,6 +17,24 @@ interface postDetailsProps {
 export default function PostDetails({ post }: postDetailsProps) {
 	const router = useRouter()
 
+	if (router.isFallback) {
+		return (
+			<>
+				<h6 style={{ textAlign: 'center' }}>Loading...</h6>
+				<h5 style={{ textAlign: 'center' }}>Loading...</h5>
+				<h4 style={{ textAlign: 'center' }}>Loading...</h4>
+				<h3 style={{ textAlign: 'center' }}>Loading...</h3>
+				<h2 style={{ textAlign: 'center' }}>Loading...</h2>
+				<h1 style={{ textAlign: 'center' }}>Loading...</h1>
+				<h2 style={{ textAlign: 'center' }}>Loading...</h2>
+				<h3 style={{ textAlign: 'center' }}>Loading...</h3>
+				<h4 style={{ textAlign: 'center' }}>Loading...</h4>
+				<h5 style={{ textAlign: 'center' }}>Loading...</h5>
+				<h6 style={{ textAlign: 'center' }}>Loading...</h6>
+			</>
+		)
+	}
+
 	if (!post) return null
 
 	return (
@@ -26,7 +44,7 @@ export default function PostDetails({ post }: postDetailsProps) {
 			{post.imageUrl && <img src={post.imageUrl} alt={post.title} />}
 			<p>{post.description}</p>
 			<h3>{post.author}</h3>
-			<p>{new Date(post.createdAt).toDateString()}</p>
+			<p>{new Date(post.createdAt || new Date()).toDateString()}</p>
 		</div>
 	)
 }
@@ -42,7 +60,7 @@ export const getStaticPaths: GetStaticPaths = async (context: GetStaticPathsCont
 
 	return {
 		paths: paths,
-		fallback: false,
+		fallback: true,
 	}
 }
 
@@ -58,5 +76,6 @@ export const getStaticProps: GetStaticProps<postDetailsProps> = async (context: 
 		props: {
 			post: res,
 		},
+		revalidate: 5,
 	}
 }

@@ -3,8 +3,6 @@ import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { request } from '@/model/request'
-import { response } from '@/model/response'
 import { NextPage } from 'next'
 
 const Home: NextPage = () => {

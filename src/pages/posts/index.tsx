@@ -50,16 +50,17 @@ export default function Post(props: PostListPageProps) {
 }
 
 export const getStaticProps: GetStaticProps<PostListPageProps> = async (context: GetStaticPropsContext) => {
-	//serverside
-	//buildtime
+	const page = context.params?.page || 1
 	// const response = await fetch('https://dummyjson.com/posts')
-	const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1')
-	const data = await response.json()
+	const response = await fetch(`https://js-post-api.herokuapp.com/api/posts?_page=${page}`)
+
+	const data = await response?.json()
 	const posts = data.data
 
 	return {
 		props: {
 			posts: posts,
 		},
+		revalidate: 5,
 	}
 }
