@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/cookies": "^0.7.7",
     "@types/http-proxy": "^1.17.11",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
+    "cookies": "^0.8.0",
     "crypto-js": "^4.1.1",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",

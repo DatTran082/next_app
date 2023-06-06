@@ -1,4 +1,5 @@
 import { BaseRequest, BaseResponse } from '@/models'
+import Cookies from 'cookies'
 
 // const http = require('http')
 import httpProxy from 'http-proxy'
@@ -24,12 +25,24 @@ export const config = {
 }
 
 export default function handler(req: BaseRequest, res: BaseResponse) {
-	req.headers.cookie = ''
-	proxy.web(req, res, {
-		target: process.env.API_URL,
-		// target: `https://js-post-api.herokuapp.com`,
-		changeOrigin: true,
-		selfHandleResponse: false,
+	return new Promise((resolve) => {
+		const cookies = new Cookies(req, res)
+		const accessToken = cookies.get('access_token')
+
+		if (accessToken) {
+			req.headers.authorization = `Bearer ${accessToken}`
+		}
+
+		req.headers.cookie = ''
+		proxy.web(req, res, {
+			target: process.env.API_URL ?? `https://js-post-api.herokuapp.com`,
+			changeOrigin: true,
+			selfHandleResponse: false,
+		})
+
+		proxy.once('proxyRes', () => {
+			resolve(true)
+		})
 	})
 }
 
