@@ -14,7 +14,7 @@ export type AppPropsWithLayout = AppProps & {
 	Component: NextPageWithLayout
 }
 
-export type BaseResponse<T> = NextApiResponse & {
+export type BaseResponse<T = any> = NextApiResponse & {
 	data: T
 	code: number
 	message: string
