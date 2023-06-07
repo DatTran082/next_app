@@ -11,8 +11,13 @@ export const config = {
 }
 
 export default function handler(req: BaseRequest, res: BaseResponse) {
+	if (req.method != 'POST') {
+		return res.status(400).json({ message: 'method not supported', code: 0, data: '' })
+	}
+
 	return new Promise((resolve) => {
 		req.headers.cookie = ''
+		req.headers.authorization = 'Bearer asdfasdfasdf'
 
 		proxy.web(req, res, {
 			target: process.env.API_URL ?? `https://js-post-api.herokuapp.com`,
@@ -28,22 +33,29 @@ export default function handler(req: BaseRequest, res: BaseResponse) {
 
 			proxyRes.on('end', () => {
 				try {
-					const { accessToken, expireAt } = JSON.parse(body)
-					console.log('res from proxy server: ', { accessToken, expireAt })
+					const response = JSON.parse(body)
+					const { accessToken, expireAt, error } = response
 
-					const cookies = new Cookies(req, res, { secure: true })
+					const cookies = new Cookies(req, res, { secure: process.env.NODE_ENV === 'production' })
+
 					cookies.set('access_token', accessToken, {
 						httpOnly: true,
 						sameSite: 'lax',
-						expires: new Date(expireAt),
+						expires: new Date(expireAt ?? new Date()),
 					})
+
 					// res.end('my response to client')
 					;(res as BaseResponse)
 						.status(200)
-						.json({ message: 'login successfuly', code: 0, data: { accessToken, expireAt } })
+						.json({ message: error ?? 'thuc hien thanh cong', code: 0, data: error ? null : response })
 				} catch (error) {
 					;(res as BaseResponse).status(500).json({ message: 'something went wrong', code: 500, data: null })
 				}
+			})
+
+			proxyRes.on('error', (ex: Error) => {
+				body += ex.name + ex.message + ex.cause + ex.stack
+				;(res as BaseResponse).status(400).json({ message: ex.message, code: 400, data: null })
 			})
 
 			resolve(true)

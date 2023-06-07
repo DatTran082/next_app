@@ -1,4 +1,4 @@
-import { encrypt } from '@/common'
+import { encrypt } from '@/utils'
 import baseClient from './baseClient'
 
 export class request extends baseClient {

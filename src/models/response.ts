@@ -1,4 +1,4 @@
-import { decrypt } from '@/common'
+import { decrypt } from '@/utils'
 import baseClient from './baseClient'
 
 export class response extends baseClient {
