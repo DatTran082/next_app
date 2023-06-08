@@ -29,13 +29,11 @@ export default function handler(req: BaseRequest, res: BaseResponse) {
 		const cookies = new Cookies(req, res)
 		let accessToken = cookies.get('access_token')
 
-		if (accessToken || true) {
-			accessToken =
-				'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0cmFuIiwiaWF0IjoxNjg2MTI3NzYzLCJleHAiOjE2ODYyMTQxNjN9.peYqe1iBRSwfVD56Tn9N1Ft-03Ro7Aaq1mazDJDE2b4'
+		if (accessToken) {
 			req.headers.authorization = `Bearer ${accessToken}`
+			req.headers.cookie = ''
 		}
 
-		req.headers.cookie = ''
 		proxy.web(req, res, {
 			target: process.env.API_URL ?? `https://js-post-api.herokuapp.com`,
 			changeOrigin: true,

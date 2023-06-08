@@ -1,6 +1,7 @@
 import { BaseRequest, BaseResponse } from '@/models'
 import httpProxy, { ProxyResCallback } from 'http-proxy'
-import Cookies from 'cookies'
+// import Cookies from 'cookies'
+import { serialize } from 'cookie'
 
 const proxy = httpProxy.createProxyServer({})
 
@@ -34,20 +35,26 @@ export default function handler(req: BaseRequest, res: BaseResponse) {
 			proxyRes.on('end', () => {
 				try {
 					const response = JSON.parse(body)
-					const { accessToken, expireAt, error } = response
+					const { accessToken, expireAt, error, message } = response
 
-					const cookies = new Cookies(req, res, { secure: process.env.NODE_ENV === 'production' })
+					// const cookies = new Cookies(req, res, { secure: process.env.NODE_ENV != 'development' })
+					// cookies.set('access_token', accessToken, {
+					// 	httpOnly: true,
+					// 	sameSite: 'lax',
+					// 	expires: new Date(expireAt ?? new Date()),
+					// })
 
-					cookies.set('access_token', accessToken, {
+					const cookie = serialize('access_token', accessToken, {
 						httpOnly: true,
 						sameSite: 'lax',
-						expires: new Date(expireAt ?? new Date()),
+						expires: expireAt,
+						secure: true,
 					})
 
-					// res.end('my response to client')
+					res.setHeader('Set-Cookie', cookie)
 					;(res as BaseResponse)
 						.status(200)
-						.json({ message: error ?? 'thuc hien thanh cong', code: 0, data: error ? null : response })
+						.json({ message: error ?? message ?? 'thuc hien thanh cong', code: 0, data: error ? null : response })
 				} catch (error) {
 					;(res as BaseResponse).status(500).json({ message: 'something went wrong', code: 500, data: null })
 				}
