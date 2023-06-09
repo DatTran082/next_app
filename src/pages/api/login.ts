@@ -52,9 +52,7 @@ export default function handler(req: BaseRequest, res: BaseResponse) {
 					})
 
 					res.setHeader('Set-Cookie', cookie)
-					;(res as BaseResponse)
-						.status(200)
-						.json({ message: error ?? message ?? 'thuc hien thanh cong', code: 0, data: error ? null : response })
+					;(res as BaseResponse).status(200).json({ message: error ?? message ?? 'thuc hien thanh cong', code: 0, data: error ? null : response })
 				} catch (error) {
 					;(res as BaseResponse).status(500).json({ message: 'something went wrong', code: 500, data: null })
 				}

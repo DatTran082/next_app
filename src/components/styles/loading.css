@@ -1,30 +1,4 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
-    }
-}
-
 body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(to bottom,
-            transparent,
-            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-} */
-
-
-body .dooooor {
     display: flex;
     width: 100%;
     height: 100vh;
@@ -79,7 +53,7 @@ body .dooooor {
     }
 }
 
-body .dooooor .door {
+body .door {
     position: absolute;
     width: 100px;
     height: 200px;
@@ -93,32 +67,32 @@ body .dooooor .door {
     transform: translateZ(-1px);
 }
 
-body .dooooor .door:nth-of-type(3) {
+body .door:nth-of-type(3) {
     -webkit-animation-delay: 1.25s;
     animation-delay: 1.25s;
 }
 
-body .dooooor .door:nth-of-type(3) .face {
+body .door:nth-of-type(3) .face {
     -webkit-animation-delay: 1.25s;
     animation-delay: 1.25s;
 }
 
-body .dooooor .door:nth-of-type(2) {
+body .door:nth-of-type(2) {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
 }
 
-body .dooooor .door:nth-of-type(2) .face {
+body .door:nth-of-type(2) .face {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
 }
 
-body .dooooor .door:nth-of-type(1) {
+body .door:nth-of-type(1) {
     -webkit-animation-delay: 3.75s;
     animation-delay: 3.75s;
 }
 
-body .dooooor .door:nth-of-type(1) .face {
+body .door:nth-of-type(1) .face {
     -webkit-animation-delay: 3.75s;
     animation-delay: 3.75s;
 }
@@ -305,7 +279,7 @@ body .dooooor .door:nth-of-type(1) .face {
     }
 }
 
-body .dooooor .door:after {
+body .door:after {
     content: "";
     position: absolute;
     width: 200vw;
@@ -316,7 +290,7 @@ body .dooooor .door:after {
     z-index: -1;
 }
 
-body .dooooor .door .face {
+body .door .face {
     position: absolute;
     left: 0;
     top: 0;
@@ -330,7 +304,7 @@ body .dooooor .door .face {
     animation: swing 5s ease-in-out infinite;
 }
 
-body .dooooor .door .face:before {
+body .door .face:before {
     content: "";
     position: absolute;
     width: 10px;
@@ -346,7 +320,7 @@ body .dooooor .door .face:before {
     background: #222;
 }
 
-body .dooooor .door .face:after {
+body .door .face:after {
     content: "";
     position: absolute;
     width: 4px;
@@ -399,7 +373,7 @@ body .dooooor .door .face:after {
     }
 }
 
-body .dooooor .door .face .right {
+body .door .face .right {
     position: absolute;
     width: 10%;
     background: #222;

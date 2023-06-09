@@ -1,36 +1,28 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { MainLayout } from '@/layout'
 import { NextPageWithLayout } from '@/models'
+import { Knocknock } from '@/components'
 
 const Home: NextPageWithLayout = () => {
 	const router = useRouter()
 
 	const detailPage = () => {
 		router.push({
-			pathname: '/posts/[postId]',
-			query: {
-				postId: '123',
-				ref: 'social',
-			},
+			pathname: '/knock_knock',
 		})
 	}
 
+	const Knocking = () => (
+		<button style={{ position: 'absolute', left: '30%', right: '30%', top: '30%', bottom: '30%', margin: 'auto 0', color: '#343d46' }} onClick={detailPage}>
+			<p style={{ fontSize: '100px', textTransform: 'uppercase', fontWeight: 'bold', fontFamily: 'fantasy' }}>knock knock</p>
+		</button>
+	)
+
 	return (
-		<div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-			<button
-				className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-				onClick={detailPage}
-			>
-				By <Image src="/vercel.svg" alt="Vercel Logo" className="dark:invert" width={100} height={24} priority />
-			</button>
-		</div>
+		<>
+			{/* <Knocking /> */}
+			<Knocknock />
+		</>
 	)
 }
-
-Home.Layout = MainLayout
 
 export default Home

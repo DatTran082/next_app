@@ -1,20 +1,33 @@
 import { authApi } from '@/client'
-import { GetServerSideProps, GetServerSidePropsContext, GetStaticPaths, GetStaticPathsContext } from 'next'
+import { useAuth } from '@/hooks'
 import { useState } from 'react'
 
 interface LoginPageProps {}
 
 const LoginPage = () => {
+	const { profile, login, logout, error, isLoading } = useAuth({ revalidateOnMount: false })
 	const [tempt, setTempt] = useState<any>('')
 
 	const handleLogin = async (data: any) => {
-		const res = await authApi.login({ username: 'dat tran', password: '@123123' })
-		setTempt(res)
+		// const res = await authApi.login({ username: 'dat tran', password: '@123123' })
+		// setTempt(res)
+
+		try {
+			await login()
+		} catch (error) {
+			console.log('fail to login')
+		}
 	}
 
-	const handleLGetprofile = async () => {
-		const res = await authApi.getProfile({ username: 'dat tran', password: '@123123' })
-		setTempt(res)
+	const handleLogout = async (data: any) => {
+		// const res = await authApi.login({ username: 'dat tran', password: '@123123' })
+		// setTempt(res)
+
+		try {
+			await logout()
+		} catch (error) {
+			console.log('fail to login')
+		}
 	}
 
 	return (
@@ -22,11 +35,11 @@ const LoginPage = () => {
 			<h1>Login Page</h1>
 
 			<button onClick={handleLogin}>Login</button>
-			<button onClick={handleLGetprofile}>getProfile</button>
-			<button>Logout</button>
+			{/* <button onClick={handleLGetprofile}>getProfile</button> */}
+			<button onClick={handleLogout}>Logout</button>
 
-			<h1>request result</h1>
-			<h3 style={{ font: 'icon' }}>{tempt && JSON.stringify(tempt, null, 2)}</h3>
+			<h1>PROFILE: {isLoading ? 'Loading ...' : ''}</h1>
+			<h3 style={{ font: 'icon' }}>{profile && JSON.stringify(profile ?? {}, null, 4)}</h3>
 		</>
 	)
 }
