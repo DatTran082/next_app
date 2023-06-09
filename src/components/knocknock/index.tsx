@@ -1,24 +1,27 @@
+// import styles from './styles.module.css'
+import styles from './knocknock.module.css'
+
 const Knocknock = () => {
 	return (
-		<div className="dooooor">
-			<div className="door">
-				<div className="face">
-					<div className="right"></div>
+		<div className={styles.dooooor}>
+			<div className={styles.door}>
+				<div className={styles.face}>
+					<div className={styles.right}></div>
 				</div>
 			</div>
-			<div className="door">
-				<div className="face">
-					<div className="right"></div>
+			<div className={styles.door}>
+				<div className={styles.face}>
+					<div className={styles.right}></div>
 				</div>
 			</div>
-			<div className="door">
-				<div className="face">
-					<div className="right"></div>
+			<div className={styles.door}>
+				<div className={styles.face}>
+					<div className={styles.right}></div>
 				</div>
 			</div>
-			<div className="door">
-				<div className="face">
-					<div className="right"></div>
+			<div className={styles.door}>
+				<div className={styles.face}>
+					<div className={styles.right}></div>
 				</div>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style={{ display: 'none' }}>

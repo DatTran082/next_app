@@ -1,4 +1,4 @@
-body {
+body .dooooor {
     display: flex;
     width: 100%;
     height: 100vh;
@@ -53,7 +53,7 @@ body {
     }
 }
 
-body .door {
+body .dooooor .door {
     position: absolute;
     width: 100px;
     height: 200px;
@@ -67,32 +67,32 @@ body .door {
     transform: translateZ(-1px);
 }
 
-body .door:nth-of-type(3) {
+body .dooooor .door:nth-of-type(3) {
     -webkit-animation-delay: 1.25s;
     animation-delay: 1.25s;
 }
 
-body .door:nth-of-type(3) .face {
+body .dooooor .door:nth-of-type(3) .face {
     -webkit-animation-delay: 1.25s;
     animation-delay: 1.25s;
 }
 
-body .door:nth-of-type(2) {
+body .dooooor .door:nth-of-type(2) {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
 }
 
-body .door:nth-of-type(2) .face {
+body .dooooor .door:nth-of-type(2) .face {
     -webkit-animation-delay: 2.5s;
     animation-delay: 2.5s;
 }
 
-body .door:nth-of-type(1) {
+body .dooooor .door:nth-of-type(1) {
     -webkit-animation-delay: 3.75s;
     animation-delay: 3.75s;
 }
 
-body .door:nth-of-type(1) .face {
+body .dooooor .door:nth-of-type(1) .face {
     -webkit-animation-delay: 3.75s;
     animation-delay: 3.75s;
 }
@@ -279,7 +279,7 @@ body .door:nth-of-type(1) .face {
     }
 }
 
-body .door:after {
+body .dooooor .door:after {
     content: "";
     position: absolute;
     width: 200vw;
@@ -290,7 +290,7 @@ body .door:after {
     z-index: -1;
 }
 
-body .door .face {
+body .dooooor .door .face {
     position: absolute;
     left: 0;
     top: 0;
@@ -304,7 +304,7 @@ body .door .face {
     animation: swing 5s ease-in-out infinite;
 }
 
-body .door .face:before {
+body .dooooor .door .face:before {
     content: "";
     position: absolute;
     width: 10px;
@@ -320,7 +320,7 @@ body .door .face:before {
     background: #222;
 }
 
-body .door .face:after {
+body .dooooor .door .face:after {
     content: "";
     position: absolute;
     width: 4px;
@@ -373,7 +373,7 @@ body .door .face:after {
     }
 }
 
-body .door .face .right {
+body .dooooor .door .face .right {
     position: absolute;
     width: 10%;
     background: #222;

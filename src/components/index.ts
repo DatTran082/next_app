@@ -1,4 +1,5 @@
 export { default as Header } from './common/Header'
 export { default as Footer } from './common/Footer'
 export { default as SWRSample } from './SWRSample'
-export { default as Knocknock } from './Knocknock'
+export { default as Knocknock } from './knocknock'
+export { default as Pulllll } from './pull'
