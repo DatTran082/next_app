@@ -14,7 +14,7 @@
     "@tensorflow/tfjs-backend-cpu": "^4.7.0",
     "@tensorflow/tfjs-backend-webgl": "^4.7.0",
     "@tensorflow/tfjs-converter": "^4.7.0",
-    "@tensorflow/tfjs-node": "^4.7.0",
+    "@tensorflow/tfjs-core": "^4.7.0",
     "@types/cookie": "^0.5.1",
     "@types/cookies": "^0.7.7",
     "@types/http-proxy": "^1.17.11",
