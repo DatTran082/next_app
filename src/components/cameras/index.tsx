@@ -54,7 +54,12 @@ const CamScreen = () => {
 				/>
 			</div>
 
-			<video style={{ position: 'fixed', objectFit: 'cover', width: '100%', height: '100%', left: 0, top: 0, zIndex: 1 }} ref={videoRef} autoPlay />
+			<video
+				style={{ position: 'fixed', objectFit: 'cover', width: '100%', height: '100%', left: 0, top: 0, zIndex: 1 }}
+				className={styles.preview}
+				ref={videoRef}
+				autoPlay
+			/>
 		</>
 	)
 }
