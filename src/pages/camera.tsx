@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from 'react'
 import { MainLayout } from '@/layout'
-import { Cameras } from '@/components'
+import { Camera } from '@/components'
 
 export default function CamerasPage() {
-	return <Cameras />
+	return <Camera />
 }
 
 CamerasPage.Layout = MainLayout

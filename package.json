@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tensorflow-models/coco-ssd": "^2.2.2",
+    "@tensorflow/tfjs": "^2.8.6",
     "@types/cookie": "^0.5.1",
     "@types/cookies": "^0.7.7",
     "@types/http-proxy": "^1.17.11",
@@ -27,11 +29,18 @@
     "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-media-recorder": "^1.6.6",
+    "react-record-webcam": "^0.0.18",
+    "react-use-measure": "^2.1.1",
+    "react-video-recorder": "^3.19.4",
+    "react-webcam": "^7.1.1",
     "swr": "^2.1.5",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@types/crypto-js": "^4.1.1"
+    "@types/crypto-js": "^4.1.1",
+    "@types/react-measure": "^2.0.8",
+    "@types/react-video-recorder": "^3.19.0"
   }
 }

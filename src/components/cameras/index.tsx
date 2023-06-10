@@ -1,42 +1,18 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './camera.module.css'
+import { useCamera } from '@/hooks'
 
 const CamScreen = () => {
 	const videoRef = useRef<any>(null)
-	const [mediaStream, setMediaStream] = useState<MediaStream | null>(null)
-
-	// const sendVideoData = (data: string) => {
-	// 	socket.emit('videoData', data)
-	// }
-
-	useEffect(() => {
-		const enableVideoStream = async () => {
-			const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-			try {
-				setMediaStream(stream)
-			} catch (error) {
-				console.error('Error accessing webcam', error)
-			}
-		}
-
-		enableVideoStream()
-	}, [])
+	const [activecam, setActivecam] = useState<boolean>(false)
+	const mediaStream = useCamera({ video: activecam })
 
 	useEffect(() => {
 		if (videoRef.current && mediaStream) {
 			videoRef.current.srcObject = mediaStream
 		}
+		console.log('streming')
 	}, [videoRef, mediaStream])
-
-	useEffect(() => {
-		return () => {
-			if (mediaStream) {
-				mediaStream.getTracks().forEach((track) => {
-					track.stop()
-				})
-			}
-		}
-	}, [mediaStream])
 
 	return (
 		<>
@@ -59,6 +35,8 @@ const CamScreen = () => {
 				className={styles.preview}
 				ref={videoRef}
 				autoPlay
+				// onClick={() => mediaStream?.removeTrack}
+				// onPlay={() => console.log('onplay')}
 			/>
 		</>
 	)
