@@ -1,3 +1,4 @@
+import { NextPageWithLayout } from '@/models'
 import { GetServerSidePropsContext, GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -18,7 +19,7 @@ interface PostListPageProps {
 	]
 }
 
-export default function Params(props: PostListPageProps) {
+export default function Params(props: PostListPageProps & NextPageWithLayout) {
 	const router = useRouter()
 
 	const detailPage = (id: string) => {
