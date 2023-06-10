@@ -1,0 +1,370 @@
+.scanning {
+  position: relative;
+  display: block;
+  margin: 0px auto;
+  overflow: hidden;
+  width: 100%;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+}
+
+.scanning>video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 99;
+  border-radius: '24px';
+}
+
+.animation {
+  --grid-gap: 0.5em;
+  animation-duration: 2s;
+  animation-delay: 0s;
+  animation-count: infinite;
+}
+
+.animation::before,
+.animation::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.animation::before,
+.animation::after {
+  z-index: 9;
+  background-image: linear-gradient(to right, transparent 0%, rgba(66, 252, 255, 0.615) 100%);
+  background-repeat: no-repeat;
+  background-size: 20% 100%;
+  background-position-x: -25%;
+  -webkit-animation-name: scanning-horizal;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-duration: inherit;
+  -webkit-animation-delay: inherit;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: initial;
+  -webkit-animation-iteration-count: 1;
+  animation-name: scanning-horizal;
+  animation-timing-function: linear;
+  animation-duration: inherit;
+  animation-delay: inherit;
+  animation-fill-mode: forwards;
+  animation-direction: initial;
+  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
+  -webkit-mask: repeating-linear-gradient(to left, rgba(66, 252, 255, 0.615), rgba(66, 252, 255, 0.615) 0.1em, transparent calc(0.1em + 0.5px), transparent 0.5em), repeating-linear-gradient(to bottom, rgba(66, 252, 255, 0.615), rgba(66, 252, 255, 0.615) 0.1em, transparent calc(0.1em + 0.5px), transparent 0.5em);
+  -webkit-mask-position-x: 100%;
+
+}
+
+.animation::before {
+  -webkit-animation-name: scanning-horizal-single;
+  animation-name: scanning-horizal-single;
+
+}
+
+.animation-vertical::before,
+.animation-vertical::after {
+  background-position-x: initial;
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(66, 252, 255, 0.615) 100%);
+  background-size: 100% 20%;
+  background-position-y: -25%;
+  -webkit-animation-name: scanning-vertical;
+  animation-name: scanning-vertical;
+}
+
+.animation-vertical::before {
+  -webkit-animation-name: scanning-vertical-single;
+  animation-name: scanning-vertical-single;
+}
+
+.animation-vertical::before {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
+.animation-paused,
+.animation-paused::before,
+.animation-paused::after {
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.animation-direction-left::before,
+.animation-direction-left::after {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.animation-direction-down {
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(66, 252, 255, 0.615) 100%);
+}
+
+.animation-direction-up::before,
+.animation-direction-up::after {
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
+@keyframes scanning-horizal-single {
+  0% {
+    background-position-x: -25%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
+  40% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    display: block;
+    opacity: initial;
+  }
+
+  45% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 0;
+  }
+
+  50% {
+    background-position-x: -25%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    opacity: 0;
+  }
+
+  55% {
+    background-position-x: -25%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    opacity: initial;
+  }
+
+  95% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  100% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scanning-horizal {
+  0% {
+    background-position-x: -25%;
+  }
+
+  90% {
+    background-position-x: 125%;
+  }
+
+  100% {
+    background-position-x: 125%;
+    display: none;
+  }
+}
+
+@keyframes scanning-vertical {
+  0% {
+    background-position-y: -25%;
+  }
+
+  90% {
+    background-position-y: 125%;
+  }
+
+  100% {
+    background-position-y: 125%;
+    display: none;
+  }
+}
+
+@keyframes scanning-vertical-single {
+  0% {
+    background-position-y: -25%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+
+  40% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    display: block;
+    opacity: initial;
+  }
+
+  45% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    opacity: 0;
+  }
+
+  50% {
+    background-position-y: -25%;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    opacity: 0;
+  }
+
+  55% {
+    background-position-y: -25%;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    opacity: initial;
+  }
+
+  95% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
+
+  100% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@-webkit-keyframes scanning-horizal-single {
+  0% {
+    background-position-x: -25%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+
+  40% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    display: block;
+    opacity: initial;
+  }
+
+  45% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    opacity: 0;
+  }
+
+  50% {
+    background-position-x: -25%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    opacity: 0;
+  }
+
+  55% {
+    background-position-x: -25%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    opacity: initial;
+  }
+
+  95% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
+
+  100% {
+    background-position-x: 125%;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes scanning-horizal {
+  0% {
+    background-position-x: -25%;
+  }
+
+  90% {
+    background-position-x: 125%;
+  }
+
+  100% {
+    background-position-x: 125%;
+    display: none;
+  }
+}
+
+@-webkit-keyframes scanning-vertical {
+  0% {
+    background-position-y: -25%;
+  }
+
+  90% {
+    background-position-y: 125%;
+  }
+
+  100% {
+    background-position-y: 125%;
+    display: none;
+  }
+}
+
+@-webkit-keyframes scanning-vertical-single {
+  0% {
+    background-position-y: -25%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+
+  40% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    display: block;
+    opacity: initial;
+  }
+
+  45% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    opacity: 0;
+  }
+
+  50% {
+    background-position-y: -25%;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    opacity: 0;
+  }
+
+  55% {
+    background-position-y: -25%;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    opacity: initial;
+  }
+
+  95% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
+
+  100% {
+    background-position-y: 125%;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}

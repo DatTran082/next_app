@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
+import styles from './camera.module.css'
 
 const CamScreen = () => {
 	const videoRef = useRef<any>(null)
@@ -10,8 +11,8 @@ const CamScreen = () => {
 
 	useEffect(() => {
 		const enableVideoStream = async () => {
+			const stream = await navigator.mediaDevices.getUserMedia({ video: true })
 			try {
-				const stream = await navigator.mediaDevices.getUserMedia({ video: true })
 				setMediaStream(stream)
 			} catch (error) {
 				console.error('Error accessing webcam', error)
@@ -38,9 +39,23 @@ const CamScreen = () => {
 	}, [mediaStream])
 
 	return (
-		<div>
-			<video ref={videoRef} autoPlay={true} />
-		</div>
+		<>
+			<div className={`${styles.scanning} ${styles.animation} ${styles.animationDirectionRight}`}>
+				<div
+					style={{
+						display: 'block',
+						width: '100%',
+						minHeight: '200px',
+						border: '3px solid #c8c8c8',
+						borderRadius: '24px',
+						zIndex: 999,
+						opacity: '20%',
+					}}
+				/>
+			</div>
+
+			<video style={{ position: 'fixed', objectFit: 'cover', width: '100%', height: '100%', left: 0, top: 0, zIndex: 1 }} ref={videoRef} autoPlay />
+		</>
 	)
 }
 export default CamScreen
