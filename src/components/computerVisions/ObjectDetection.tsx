@@ -2,9 +2,9 @@
 require('@tensorflow/tfjs-backend-cpu')
 require('@tensorflow/tfjs-backend-webgl')
 const cocoSsd = require('@tensorflow-models/coco-ssd')
-import React, { useRef, useEffect } from 'react'
-import styles from './detectRealTime.module.css'
 
+import React, { useRef, useEffect } from 'react'
+import styles from './styles/objectDetection.module.css'
 import Webcam from 'react-webcam'
 import { drawRect } from '@/utils'
 
@@ -14,12 +14,12 @@ function DetectObject() {
 
 	useEffect(() => {
 		const runCoco = async () => {
-			const net = await cocoSsd.load()
+			const model = await cocoSsd.load()
 			console.log('Handpose model loaded.')
 			console.log('stylessssssss', styles)
 			//  Loop and detect hands
 			setInterval(() => {
-				detect(net)
+				detect(model)
 			}, 10)
 		}
 		runCoco()
@@ -27,7 +27,7 @@ function DetectObject() {
 
 	// Main function
 
-	const detect = async (net: any) => {
+	const detect = async (model: any) => {
 		// Check data is available
 		if (typeof webcamRef.current !== 'undefined' && webcamRef.current !== null && webcamRef.current.video.readyState === 4) {
 			// Get Video Properties
@@ -44,32 +44,14 @@ function DetectObject() {
 			canvasRef.current.height = videoHeight
 
 			// Make Detections
-			const obj = await net.detect(video)
-
+			const obj = await model.detect(video)
 			// Draw mesh
 			const ctx = canvasRef.current.getContext('2d')
 			console.log(obj, ctx)
 
-			// drawRect(obj, ctx)
+			// ctx.drawImage(video, 0, 0)
 
-			obj.forEach((prediction: any) => {
-				// Extract boxes and classes
-				const [x, y, width, height] = prediction['bbox']
-				const text = prediction['class']
-
-				// Set styling
-				// const color = Math.floor(Math.random() * 16777215).toString(16)
-				const color = '42f5dd'
-				ctx.strokeStyle = '#' + color
-				ctx.font = '18px Arial'
-
-				// Draw rectangles and text
-				ctx.beginPath()
-				ctx.fillStyle = '#' + color
-				ctx.fillText(text, x, y)
-				ctx.rect(x, y, width, height)
-				ctx.stroke()
-			})
+			drawRect(obj, ctx)
 		}
 	}
 
@@ -92,16 +74,18 @@ function DetectObject() {
 					ref={webcamRef}
 					muted={true}
 					style={{
-						position: 'absolute',
-						marginLeft: 'auto',
-						marginRight: 'auto',
-						left: 0,
-						right: 0,
-						textAlign: 'center',
-						zIndex: 9,
+						position: 'fixed',
+						// objectFit: 'cover',
 						width: '100%',
 						height: '100%',
-						// transform: 'scaleY(1)',
+						// left: 0,
+						// top: 0,
+						zIndex: 9,
+						maxHeight: 480,
+						maxWidth: 640,
+						// transform: 'scaleY(-1)',
+						left: '50%',
+						transform: 'translate(-50%, 0)',
 					}}
 				/>
 
@@ -111,12 +95,18 @@ function DetectObject() {
 						position: 'absolute',
 						marginLeft: 'auto',
 						marginRight: 'auto',
-						left: 0,
-						right: 0,
+						// left: 0,
+						// right: 0,
 						textAlign: 'center',
 						zIndex: 10,
-						width: 640,
-						height: 480,
+						// width: 640,
+						// height: 480,
+						width: '100%',
+						height: '100%',
+						maxHeight: 480,
+						maxWidth: 640,
+						left: '50%',
+						transform: 'translate(-50%, 0)',
 					}}
 				/>
 			</header>
