@@ -42,6 +42,7 @@ const FaceDetection = () => {
 	const detect = async (detector: FaceDetector) => {
 		if (typeof webcamRef.current !== 'undefined' && webcamRef.current !== null && webcamRef.current.video.readyState === 4) {
 			// Get Video Properties
+
 			const video = webcamRef.current.video
 			const videoWidth = webcamRef.current.video.videoWidth
 			const videoHeight = webcamRef.current.video.videoHeight
@@ -49,12 +50,11 @@ const FaceDetection = () => {
 			// Set video width
 			webcamRef.current.video.width = videoWidth
 			webcamRef.current.video.height = videoHeight
-
 			// Set canvas width
 			canvasRef.current.width = videoWidth
 			canvasRef.current.height = videoHeight
 
-			const estimationConfig = { flipHorizontal: false }
+			const estimationConfig = { flipHorizontal: true }
 			const faces = await detector.estimateFaces(video, estimationConfig)
 			console.log(faces)
 
@@ -83,6 +83,7 @@ const FaceDetection = () => {
 			>
 				<Webcam
 					ref={webcamRef}
+					mirrored
 					style={{
 						position: 'absolute',
 						marginLeft: 'auto',

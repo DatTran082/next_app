@@ -16,7 +16,7 @@ function DetectObject() {
 		const runCoco = async () => {
 			const model = await cocoSsd.load()
 			console.log('Handpose model loaded.')
-			console.log('stylessssssss', styles)
+
 			//  Loop and detect hands
 			setInterval(() => {
 				detect(model)
@@ -44,6 +44,7 @@ function DetectObject() {
 			canvasRef.current.height = videoHeight
 
 			// Make Detections
+			const estimationConfig = { flipHorizontal: true }
 			const obj = await model.detect(video)
 			// Draw mesh
 			const ctx = canvasRef.current.getContext('2d')
@@ -73,6 +74,7 @@ function DetectObject() {
 				<Webcam
 					ref={webcamRef}
 					muted={true}
+					// mirrored
 					style={{
 						position: 'fixed',
 						// objectFit: 'cover',
