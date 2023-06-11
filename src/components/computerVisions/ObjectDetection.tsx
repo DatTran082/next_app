@@ -2,9 +2,9 @@
 require('@tensorflow/tfjs-backend-cpu')
 require('@tensorflow/tfjs-backend-webgl')
 const cocoSsd = require('@tensorflow-models/coco-ssd')
+
 import React, { useRef, useEffect } from 'react'
 import styles from './styles/objectDetection.module.css'
-
 import Webcam from 'react-webcam'
 import { drawRect } from '@/utils'
 
@@ -14,12 +14,12 @@ function DetectObject() {
 
 	useEffect(() => {
 		const runCoco = async () => {
-			const net = await cocoSsd.load()
+			const model = await cocoSsd.load()
 			console.log('Handpose model loaded.')
 			console.log('stylessssssss', styles)
 			//  Loop and detect hands
 			setInterval(() => {
-				detect(net)
+				detect(model)
 			}, 10)
 		}
 		runCoco()
@@ -27,7 +27,7 @@ function DetectObject() {
 
 	// Main function
 
-	const detect = async (net: any) => {
+	const detect = async (model: any) => {
 		// Check data is available
 		if (typeof webcamRef.current !== 'undefined' && webcamRef.current !== null && webcamRef.current.video.readyState === 4) {
 			// Get Video Properties
@@ -44,11 +44,12 @@ function DetectObject() {
 			canvasRef.current.height = videoHeight
 
 			// Make Detections
-			const obj = await net.detect(video)
-
+			const obj = await model.detect(video)
 			// Draw mesh
 			const ctx = canvasRef.current.getContext('2d')
 			console.log(obj, ctx)
+
+			// ctx.drawImage(video, 0, 0)
 
 			drawRect(obj, ctx)
 		}
@@ -74,13 +75,17 @@ function DetectObject() {
 					muted={true}
 					style={{
 						position: 'fixed',
-						objectFit: 'cover',
+						// objectFit: 'cover',
 						width: '100%',
 						height: '100%',
-						left: 0,
-						top: 0,
+						// left: 0,
+						// top: 0,
 						zIndex: 9,
-						// transform: 'scaleY(1)',
+						maxHeight: 480,
+						maxWidth: 640,
+						// transform: 'scaleY(-1)',
+						left: '50%',
+						transform: 'translate(-50%, 0)',
 					}}
 				/>
 
@@ -90,12 +95,18 @@ function DetectObject() {
 						position: 'absolute',
 						marginLeft: 'auto',
 						marginRight: 'auto',
-						left: 0,
-						right: 0,
+						// left: 0,
+						// right: 0,
 						textAlign: 'center',
 						zIndex: 10,
-						width: 640,
-						height: 480,
+						// width: 640,
+						// height: 480,
+						width: '100%',
+						height: '100%',
+						maxHeight: 480,
+						maxWidth: 640,
+						left: '50%',
+						transform: 'translate(-50%, 0)',
 					}}
 				/>
 			</header>

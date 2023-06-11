@@ -1,8 +1,7 @@
-import { MainLayout } from '@/layout'
 import { CardDetection } from '@/components'
 
-export default function CamerasPage() {
+const Card = () => {
 	return <CardDetection />
 }
 
-CamerasPage.Layout = MainLayout
+export default Card

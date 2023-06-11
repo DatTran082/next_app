@@ -1,7 +1,7 @@
 import { ObjectDetection } from '@/components'
 
-function DetectObject() {
+const Object = () => {
 	return <ObjectDetection />
 }
 
-export default DetectObject
+export default Object
