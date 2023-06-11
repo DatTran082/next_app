@@ -3,7 +3,7 @@ require('@tensorflow/tfjs-backend-cpu')
 require('@tensorflow/tfjs-backend-webgl')
 const cocoSsd = require('@tensorflow-models/coco-ssd')
 import React, { useRef, useEffect } from 'react'
-import styles from './detectRealTime.module.css'
+import styles from './styles/objectDetection.module.css'
 
 import Webcam from 'react-webcam'
 import { drawRect } from '@/utils'
@@ -73,15 +73,13 @@ function DetectObject() {
 					ref={webcamRef}
 					muted={true}
 					style={{
-						position: 'absolute',
-						marginLeft: 'auto',
-						marginRight: 'auto',
-						left: 0,
-						right: 0,
-						textAlign: 'center',
-						zIndex: 9,
+						position: 'fixed',
+						objectFit: 'cover',
 						width: '100%',
 						height: '100%',
+						left: 0,
+						top: 0,
+						zIndex: 9,
 						// transform: 'scaleY(1)',
 					}}
 				/>

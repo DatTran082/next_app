@@ -1,11 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
-import styles from './camera.module.css'
+import styles from './styles/cardDetection.module.css'
 import { useCamera } from '@/hooks'
 
 const CamScreen = () => {
 	const videoRef = useRef<any>(null)
-	const [activecam, setActivecam] = useState<boolean>(false)
-	const mediaStream = useCamera({ video: activecam })
+	const mediaStream = useCamera({ video: true })
 
 	useEffect(() => {
 		if (videoRef.current && mediaStream) {

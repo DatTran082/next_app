@@ -1,9 +1,8 @@
-import { useRef, useState, useEffect } from 'react'
 import { MainLayout } from '@/layout'
-import { ObjectDetection } from '@/components'
+import { CardDetection } from '@/components'
 
 export default function CamerasPage() {
-	return <ObjectDetection />
+	return <CardDetection />
 }
 
 CamerasPage.Layout = MainLayout
