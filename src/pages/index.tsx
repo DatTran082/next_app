@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router'
 import { NextPageWithLayout } from '@/models'
-import { Knocknock } from '@/components'
+import { CaptureCamera, Knocknock } from '@/components'
 
 const Home: NextPageWithLayout = () => {
 	const router = useRouter()
 
 	const detailPage = () => {
 		router.push({
-			pathname: '/computerVision',
+			pathname: '/camera',
 		})
 	}
 
@@ -20,6 +20,7 @@ const Home: NextPageWithLayout = () => {
 	return (
 		<>
 			<Knocking />
+			{/* <CaptureCamera /> */}
 			{/* <Knocknock /> */}
 		</>
 	)
