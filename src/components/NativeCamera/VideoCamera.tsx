@@ -38,7 +38,8 @@ const WebcamStreamCapture = () => {
 	const handleDownload = useCallback(() => {
 		if (recordedChunks.length) {
 			const blob = new Blob(recordedChunks, {
-				type: 'video/mp4',
+				// type: 'video/mp4',
+				type: 'video/webm',
 			})
 			const url = URL.createObjectURL(blob)
 			console.log('url: ', url)
@@ -48,7 +49,7 @@ const WebcamStreamCapture = () => {
 			// a.style = 'display: none'
 			a.href = url
 			a.style.display = 'none'
-			a.download = `${new Date().toISOString()}.mp4`
+			a.download = `${new Date().toISOString()}.webm`
 			a.click()
 			window.URL.revokeObjectURL(url)
 			setRecordedChunks([])
@@ -58,8 +59,8 @@ const WebcamStreamCapture = () => {
 	const renderPreview = useCallback(() => {
 		if (recordedChunks.length) {
 			const blob = new Blob(recordedChunks, {
-				// type: 'video/webm',
-				type: 'video/mp4',
+				type: 'video/webm',
+				// type: 'video/mp4',
 			})
 			const url = URL.createObjectURL(blob)
 
@@ -83,7 +84,7 @@ const WebcamStreamCapture = () => {
 				{recordedChunks.length > 0 && <button onClick={handleDownload}>Download</button>}
 			</div>
 
-			{recordedChunks.length ? (
+			{recordedChunks.length > 0 ? (
 				renderPreview()
 			) : (
 				<Webcam

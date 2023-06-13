@@ -12,12 +12,13 @@
 import React, { useRef, useEffect, useState } from 'react'
 import Webcam from 'react-webcam'
 import { drawFace } from '@/utils'
-import '@mediapipe/face_detection'
 import '@tensorflow/tfjs-core'
+import '@mediapipe/face_detection'
 // Register WebGL backend.
 import '@tensorflow/tfjs-backend-webgl'
 import * as facemesh from '@tensorflow-models/face-detection'
 import { FaceDetector } from '@tensorflow-models/face-detection'
+import style from './styles/faceDetection.module.css'
 
 const FaceDetection = () => {
 	const webcamRef = useRef<any>(null)
@@ -47,11 +48,11 @@ const FaceDetection = () => {
 	}, [])
 
 	const stopDetect = () => {
+		window.clearInterval(tensorflow.current)
 		requestAnimationFrame(() => {
 			canvasRef.current.getContext('2d').clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
 			// drawFace(ctx, faces, true, true)
 		})
-		window.clearInterval(tensorflow.current)
 	}
 
 	const detect = async (detector: FaceDetector) => {
@@ -82,60 +83,19 @@ const FaceDetection = () => {
 	}
 
 	return (
-		<div className="FaceDetection">
-			<header
-				className="FaceDetection-header"
-				style={{
-					backgroundColor: '#282c34',
-					minHeight: '100vh',
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-					justifyContent: 'center',
-					fontSize: 'calc(10px + 2vmin)',
-					color: 'white',
-				}}
-			>
-				<Webcam
-					ref={webcamRef}
-					mirrored
-					style={{
-						position: 'absolute',
-						marginLeft: 'auto',
-						marginRight: 'auto',
-						left: 0,
-						right: 0,
-						textAlign: 'center',
-						zIndex: 9,
-						width: 640,
-						height: 480,
-					}}
-				/>
-
-				<canvas
-					ref={canvasRef}
-					style={{
-						position: 'absolute',
-						marginLeft: 'auto',
-						marginRight: 'auto',
-						left: 0,
-						right: 0,
-						textAlign: 'center',
-						zIndex: 9,
-						width: 640,
-						height: 480,
-					}}
-				/>
-
-				<button onClick={runFaceDetect} style={{ position: 'absolute', marginLeft: 'auto', left: 10, marginRight: 'auto', zIndex: 9 }}>
+		<div className={style.body}>
+			<Webcam className={style.video} ref={webcamRef} mirrored style={{}} />
+			<canvas ref={canvasRef} className={style.canvas} style={{}} />
+			<div style={{ zIndex: 9, margin: 'auto' }}>
+				<button onClick={runFaceDetect} style={{ zIndex: 99, padding: '12px' }}>
 					{' '}
 					detect
 				</button>
-				<button onClick={stopDetect} style={{ position: 'absolute', marginLeft: 'auto', left: 10, bottom: 40, marginRight: 'auto', zIndex: 9 }}>
+				<button onClick={stopDetect} style={{ zIndex: 90, padding: '12px' }}>
 					{' '}
 					stop
 				</button>
-			</header>
+			</div>
 		</div>
 	)
 }

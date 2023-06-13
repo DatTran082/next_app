@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
 import styles from './styles/cardDetection.module.css'
-import { useCamera } from '@/hooks'
+import { useNativeCamera } from '@/hooks'
 
 const CamScreen = () => {
 	const videoRef = useRef<any>(null)
-	const mediaStream = useCamera({ video: true })
+	const mediaStream = useNativeCamera({ video: true })
 
 	useEffect(() => {
 		if (videoRef.current && mediaStream) {

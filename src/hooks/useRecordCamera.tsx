@@ -4,8 +4,8 @@ import Webcam from 'react-webcam'
 const WebcamStreamCapture = () => {
 	const webcamRef = useRef<any>(null)
 	const mediaRecorderRef = useRef<any>(null)
-	const [capturing, setCapturing] = useState(false)
-	const [recordedChunks, setRecordedChunks] = useState([])
+	const [capturing, setCapturing] = useState<boolean>(false)
+	const [recordedChunks, setRecordedChunks] = useState<any>([])
 
 	const handleStartCaptureClick = useCallback(() => {
 		setCapturing(true)
@@ -20,7 +20,7 @@ const WebcamStreamCapture = () => {
 	const handleDataAvailable = useCallback(
 		({ data }: any) => {
 			if (data.size > 0) {
-				setRecordedChunks((prev) => prev.concat(data))
+				setRecordedChunks((prev: any) => prev.concat(data))
 			}
 		},
 		[setRecordedChunks]

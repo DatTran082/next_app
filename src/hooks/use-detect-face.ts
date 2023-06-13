@@ -19,7 +19,7 @@ import '@tensorflow/tfjs-backend-webgl'
 import * as facemesh from '@tensorflow-models/face-detection'
 import { FaceDetector } from '@tensorflow-models/face-detection'
 
-export default function faceDetection(webcamRef: any, canvasRef: any) {
+export default function FaceDetection(webcamRef: any, canvasRef: any) {
 	// const webcamRef = useRef<any>(null)
 	// const canvasRef = useRef<any>(null)
 	const tensorflow = useRef<any>(null)
