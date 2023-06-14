@@ -1,5 +1,23 @@
-//  Triangulation sets of three
-export const TRIANGULATION = [
+import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection'
+
+/**
+ * @license
+ * Copyright 2020 Google LLC. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+ */
+
+const TRIANGULATION = [
 	127, 34, 139, 11, 0, 37, 232, 231, 120, 72, 37, 39, 128, 121, 47, 232, 121, 128, 104, 69, 67, 175, 171, 148, 157, 154, 155, 118, 50, 101, 73, 39, 40, 9, 151,
 	108, 48, 115, 131, 194, 204, 211, 74, 40, 185, 80, 42, 183, 40, 92, 186, 230, 229, 118, 202, 212, 214, 83, 18, 17, 76, 61, 146, 160, 29, 30, 56, 157, 173,
 	106, 204, 194, 135, 214, 192, 203, 165, 98, 21, 71, 68, 51, 45, 4, 144, 24, 23, 77, 146, 91, 205, 50, 187, 201, 200, 18, 91, 106, 182, 90, 91, 181, 85, 84,
@@ -83,8 +101,27 @@ export const TRIANGULATION = [
 	353, 390, 339, 249, 339, 448, 255,
 ]
 
-// Triangle drawing method
-const drawPath = (ctx: any, points: any, closePath: any) => {
+const NUM_KEYPOINTS = 468
+const NUM_IRIS_KEYPOINTS = 5
+const GREEN = '#32EEDB'
+const RED = '#FF2C35'
+const BLUE = '#157AB3'
+const LABEL_TO_COLOR: any = {
+	lips: '#E0E0E0',
+	leftEye: '#30FF30',
+	leftEyebrow: '#30FF30',
+	leftIris: '#30FF30',
+	rightEye: '#FF3030',
+	rightEyebrow: '#FF3030',
+	rightIris: '#FF3030',
+	faceOval: '#E0E0E0',
+}
+
+function distance(a: any, b: any) {
+	return Math.sqrt(Math.pow(a[0] - b[0], 2) + Math.pow(a[1] - b[1], 2))
+}
+
+function drawPath(ctx: any, points: any, closePath: any) {
 	const region = new Path2D()
 	region.moveTo(points[0][0], points[0][1])
 	for (let i = 1; i < points.length; i++) {
@@ -95,36 +132,91 @@ const drawPath = (ctx: any, points: any, closePath: any) => {
 	if (closePath) {
 		region.closePath()
 	}
-	ctx.strokeStyle = 'grey'
 	ctx.stroke(region)
 }
 
-// Drawing Mesh
-const drawMesh = (predictions: any, ctx: any) => {
-	if (predictions.length > 0) {
-		predictions.forEach((prediction: any) => {
-			const keypoints = prediction.scaledMesh
+/**
+ * Draw the keypoints on the video.
+ * @param ctx 2D rendering context.
+ * @param faces A list of faces to render.
+ * @param triangulateMesh Whether or not to display the triangle mesh.
+ * @param boundingBox Whether or not to display the bounding box.
+ */
+export function drawResults(ctx: any, faces: any, triangulateMesh: any, boundingBox: any) {
+	faces.forEach((face: any) => {
+		const keypoints = face.keypoints.map((keypoint: any) => [keypoint.x, keypoint.y])
 
-			//  Draw Triangles
+		if (boundingBox) {
+			ctx.strokeStyle = RED
+			ctx.lineWidth = 1
+
+			const box = face.box
+			drawPath(
+				ctx,
+				[
+					[box.xMin, box.yMin],
+					[box.xMax, box.yMin],
+					[box.xMax, box.yMax],
+					[box.xMin, box.yMax],
+				],
+				true
+			)
+		}
+
+		if (triangulateMesh) {
+			ctx.strokeStyle = GREEN
+			ctx.lineWidth = 0.5
+
 			for (let i = 0; i < TRIANGULATION.length / 3; i++) {
-				// Get sets of three keypoints for the triangle
 				const points = [TRIANGULATION[i * 3], TRIANGULATION[i * 3 + 1], TRIANGULATION[i * 3 + 2]].map((index) => keypoints[index])
-				//  Draw triangle
+
 				drawPath(ctx, points, true)
 			}
+		} else {
+			ctx.fillStyle = GREEN
 
-			// Draw Dots
-			for (let i = 0; i < keypoints.length; i++) {
+			for (let i = 0; i < NUM_KEYPOINTS; i++) {
 				const x = keypoints[i][0]
 				const y = keypoints[i][1]
 
 				ctx.beginPath()
-				ctx.arc(x, y, 1 /* radius */, 0, 3 * Math.PI)
-				ctx.fillStyle = 'pink'
+				ctx.arc(x, y, 1 /* radius */, 0, 2 * Math.PI)
 				ctx.fill()
 			}
-		})
-	}
-}
+		}
 
-export default drawMesh
+		if (keypoints.length > NUM_KEYPOINTS) {
+			ctx.strokeStyle = RED
+			ctx.lineWidth = 1
+
+			const leftCenter = keypoints[NUM_KEYPOINTS]
+			const leftDiameterY = distance(keypoints[NUM_KEYPOINTS + 4], keypoints[NUM_KEYPOINTS + 2])
+			const leftDiameterX = distance(keypoints[NUM_KEYPOINTS + 3], keypoints[NUM_KEYPOINTS + 1])
+
+			ctx.beginPath()
+			ctx.ellipse(leftCenter[0], leftCenter[1], leftDiameterX / 2, leftDiameterY / 2, 0, 0, 2 * Math.PI)
+			ctx.stroke()
+
+			if (keypoints.length > NUM_KEYPOINTS + NUM_IRIS_KEYPOINTS) {
+				const rightCenter = keypoints[NUM_KEYPOINTS + NUM_IRIS_KEYPOINTS]
+				const rightDiameterY = distance(keypoints[NUM_KEYPOINTS + NUM_IRIS_KEYPOINTS + 2], keypoints[NUM_KEYPOINTS + NUM_IRIS_KEYPOINTS + 4])
+				const rightDiameterX = distance(keypoints[NUM_KEYPOINTS + NUM_IRIS_KEYPOINTS + 3], keypoints[NUM_KEYPOINTS + NUM_IRIS_KEYPOINTS + 1])
+
+				ctx.beginPath()
+				ctx.ellipse(rightCenter[0], rightCenter[1], rightDiameterX / 2, rightDiameterY / 2, 0, 0, 2 * Math.PI)
+				ctx.stroke()
+			}
+		}
+
+		const contours = faceLandmarksDetection.util.getKeypointIndexByContour(faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh)
+
+		for (const [label, contour] of Object.entries(contours)) {
+			ctx.strokeStyle = LABEL_TO_COLOR[label]
+			ctx.lineWidth = 3
+			const path = contour.map((index) => keypoints[index])
+			if (path.every((value) => value != undefined)) {
+				drawPath(ctx, path, false)
+			}
+		}
+	})
+}

@@ -7,7 +7,7 @@ const Home: NextPageWithLayout = () => {
 
 	const detailPage = () => {
 		router.push({
-			pathname: '/camera',
+			pathname: '/computerVision/landmark',
 		})
 	}
 

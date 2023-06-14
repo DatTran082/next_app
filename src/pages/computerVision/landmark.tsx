@@ -1,7 +1,7 @@
-import { FaceDetection } from '@/components'
+import { FaceLandMark } from '@/components'
 
 const LandMark = () => {
-	return <FaceDetection />
+	return <FaceLandMark />
 }
 
 export default LandMark
