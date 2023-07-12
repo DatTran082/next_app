@@ -10,11 +10,9 @@
   },
   "dependencies": {
     "@mediapipe/face_detection": "^0.4.1646425229",
-    "@mediapipe/face_mesh": "^0.4.1633559619",
     "@next/bundle-analyzer": "^13.4.5",
     "@tensorflow-models/coco-ssd": "^2.2.2",
     "@tensorflow-models/face-detection": "^1.0.2",
-    "@tensorflow-models/face-landmarks-detection": "^1.0.2",
     "@tensorflow/tfjs": "^2.8.6",
     "@tensorflow/tfjs-backend-cpu": "^4.7.0",
     "@tensorflow/tfjs-backend-wasm": "^4.7.0",

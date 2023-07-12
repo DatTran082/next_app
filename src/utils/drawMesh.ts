@@ -1,4 +1,4 @@
-import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection'
+// import * as faceLandmarksDetection from '@tensorflow-models/face-landmarks-detection'
 
 /**
  * @license
@@ -142,7 +142,7 @@ function drawPath(ctx: any, points: any, closePath: any) {
  * @param triangulateMesh Whether or not to display the triangle mesh.
  * @param boundingBox Whether or not to display the bounding box.
  */
-export function drawResults(ctx: any, faces: any, triangulateMesh: any, boundingBox: any) {
+export default function drawResults(ctx: any, faces: any, triangulateMesh: any, boundingBox: any) {
 	faces.forEach((face: any) => {
 		const keypoints = face.keypoints.map((keypoint: any) => [keypoint.x, keypoint.y])
 
@@ -208,15 +208,15 @@ export function drawResults(ctx: any, faces: any, triangulateMesh: any, bounding
 			}
 		}
 
-		const contours = faceLandmarksDetection.util.getKeypointIndexByContour(faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh)
+		// const contours = faceLandmarksDetection.util.getKeypointIndexByContour(faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh)
 
-		for (const [label, contour] of Object.entries(contours)) {
-			ctx.strokeStyle = LABEL_TO_COLOR[label]
-			ctx.lineWidth = 3
-			const path = contour.map((index) => keypoints[index])
-			if (path.every((value) => value != undefined)) {
-				drawPath(ctx, path, false)
-			}
-		}
+		// for (const [label, contour] of Object.entries(contours)) {
+		// 	ctx.strokeStyle = LABEL_TO_COLOR[label]
+		// 	ctx.lineWidth = 3
+		// 	const path = contour.map((index) => keypoints[index])
+		// 	if (path.every((value) => value != undefined)) {
+		// 		drawPath(ctx, path, false)
+		// 	}
+		// }
 	})
 }
