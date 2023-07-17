@@ -59,7 +59,7 @@ const FaceDetection = () => {
 	}
 
 	useEffect(() => {
-		// runFaceDetect()
+		runFaceDetect()
 		return () => window.clearInterval(tensorflow.current)
 	}, [])
 
@@ -102,7 +102,7 @@ const FaceDetection = () => {
 		<div className={style.body}>
 			<Webcam className={style.video} ref={webcamRef} mirrored style={{}} />
 			<canvas ref={canvasRef} className={style.canvas} style={{}} />
-			<div style={{ zIndex: 9, margin: 'auto' }}>
+			{/* <div style={{ zIndex: 9, margin: 'auto' }}>
 				<button onClick={runFaceDetect} style={{ zIndex: 99, padding: '12px' }}>
 					{' '}
 					detect
@@ -111,7 +111,7 @@ const FaceDetection = () => {
 					{' '}
 					stop
 				</button>
-			</div>
+			</div> */}
 		</div>
 	)
 }
