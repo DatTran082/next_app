@@ -19,11 +19,27 @@ import '@tensorflow/tfjs-backend-webgl'
 import * as facemesh from '@tensorflow-models/face-detection'
 import { FaceDetector } from '@tensorflow-models/face-detection'
 import style from './styles/faceDetection.module.css'
+import { useTimer } from 'use-timer'
 
 const FaceDetection = () => {
 	const webcamRef = useRef<any>(null)
 	const canvasRef = useRef<any>(null)
 	const tensorflow = useRef<any>(null)
+
+	const timer = useTimer({
+		timerType: 'DECREMENTAL',
+		autostart: false,
+		initialTime: 9,
+		endTime: 0,
+		onTimeOver: () => {
+			console.log('timer onTimeOver => ')
+		},
+		onTimeUpdate: (time: number) => {
+			console.log('timer count => ', time)
+		},
+	})
+
+	const { time, start, pause, reset, status, advanceTime } = timer
 
 	const runFaceDetect = async () => {
 		const model = facemesh.SupportedModels.MediaPipeFaceDetector
