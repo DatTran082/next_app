@@ -20,6 +20,7 @@ import * as facemesh from '@tensorflow-models/face-detection'
 import { FaceDetector } from '@tensorflow-models/face-detection'
 import style from './styles/faceDetection.module.css'
 import { useTimer } from 'use-timer'
+import drawResult from '@/utils/drawFace'
 
 const FaceDetection = () => {
 	const webcamRef = useRef<any>(null)
@@ -94,6 +95,7 @@ const FaceDetection = () => {
 			const ctx = canvasRef.current.getContext('2d')
 			requestAnimationFrame(() => {
 				drawFace(ctx, faces, true, true)
+				// drawResult(webcamRef.current.video, ctx, faces, true, true, true)
 			})
 		}
 	}
