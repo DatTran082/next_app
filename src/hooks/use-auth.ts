@@ -14,7 +14,8 @@ export default function useAuth(options?: Partial<FullConfiguration>) {
 		...options,
 	})
 	// const { data: any } = useSWR(`/login`, async () => await authApi.login({ username: 'dat tran', password: '@123123' }), { dedupingInterval: 12000 })
-	const initProfile = profile === undefined && error === undefined
+	const firstLoading = profile === undefined && error === undefined
+
 	const login = async (data?: any) => {
 		await authApi.login(data ?? { username: 'dat tran', password: '@123123' })
 		await mutate()
@@ -31,5 +32,6 @@ export default function useAuth(options?: Partial<FullConfiguration>) {
 		login,
 		logout,
 		isLoading,
+		firstLoading,
 	}
 }

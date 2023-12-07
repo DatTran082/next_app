@@ -1,7 +1,7 @@
-import { FaceDetection } from '@/components'
+import { ObjectDetection } from '@/components'
 
 const DetectObject = () => {
-	return <FaceDetection />
+	return <ObjectDetection />
 }
 
 export default DetectObject

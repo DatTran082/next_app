@@ -1,5 +1,6 @@
 export { default as Header } from './common/Header'
 export { default as Footer } from './common/Footer'
+export { default as Auth } from './common/Auth'
 export { default as SWRSample } from './SWRSample'
 export { default as Knocknock } from './knocknock'
 export { default as CardDetection } from './computerVisions/CardDetection'

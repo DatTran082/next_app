@@ -1,3 +1,4 @@
+import { DashboardLayout } from '@/layout'
 import { NextPageWithLayout } from '@/models'
 import { GetServerSidePropsContext, GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import Link from 'next/link'
@@ -50,7 +51,7 @@ export default function Params(props: PostListPageProps & NextPageWithLayout) {
 		</div>
 	)
 }
-
+Params.Layout = DashboardLayout
 export async function GetServerSideProps(context: GetServerSidePropsContext) {
 	//serverside
 	//buildtime
