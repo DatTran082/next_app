@@ -86,7 +86,7 @@ const Home: NextPageWithLayout = () => {
 						</p>
 					</a>
 					<a className="item-with-image style" href="#" target="_blank">
-						<h4>Let's adopt, don't shop.</h4>
+						<h4>Music heals the soul</h4>
 						<p>
 							Trịnh Công Sơn was born in Buôn Ma Thuột, Đắk Lắk Province, Vietnam, but as a child he lived in the village of Minh Huong in Hương Trà in Thừa
 							Thiên–Huế Province.He grew up in Huế, where he attended the Lycée Français and the Providence school. When he was ten he lived with his father in
