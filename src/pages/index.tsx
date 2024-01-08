@@ -24,7 +24,7 @@ const Home: NextPageWithLayout = () => {
 						<div>
 							<div className="issue">Issue #1 </div>
 							<div className="date">{new Date().toDateString()}</div>
-							<div className="edition">Two memes Edition</div>
+							<div className="edition">Temporary label</div>
 						</div>
 					</aside>
 					<h2 className="title--large main-title">The Rise of Wizard Detection Technology: A New Era in Magic</h2>
