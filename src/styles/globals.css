@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
     --font: "EB Garamond", serif;
     --font-title: "Playfair Display", serif;
