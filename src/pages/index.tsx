@@ -48,12 +48,12 @@ const Home: NextPageWithLayout = () => {
 					</div>
 					<a className="terrarium" href="/computerVision/object" target="_blank">
 						<figure>
-							<img src="#" />
+							<img src="https://picsum.photos/200/300" />
 							<figcaption></figcaption>
 						</figure>
 					</a>
 					<a className="item-with-image plan span--2 long--2" href="#" target="_blank">
-						<img src="#" />
+						<img src="https://picsum.photos/200/300/?blur" />
 						<h4>Can you get inspired to make your own floor plans?</h4>
 						<div className="multi-column">
 							<p>
