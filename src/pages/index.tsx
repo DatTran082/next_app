@@ -53,7 +53,7 @@ const Home: NextPageWithLayout = () => {
 						</figure>
 					</a>
 					<a className="item-with-image plan span--2 long--2" href="#" target="_blank">
-						<img src="https://picsum.photos/200/300/?blur" />
+						<img src="https://picsum.photos/200/300/" />
 						<h4>Can you get inspired to make your own floor plans?</h4>
 						<div className="multi-column">
 							<p>
@@ -68,7 +68,7 @@ const Home: NextPageWithLayout = () => {
 						<div className="hogwarts__image">
 							{' '}
 							<span>Limited time offer</span>
-							<img src="../images/showcase-hogwarts.svg" />
+							<img src="https://picsum.photos/200/300" />
 						</div>
 					</a>
 					<a className="item-with-image pasta with-border" href="#" target="_blank">
@@ -95,7 +95,7 @@ const Home: NextPageWithLayout = () => {
 						</p>
 					</a>
 					<a className="item-with-image toggles" href="../html/toggle-wrapper.html" target="_blank">
-						<img src="../images/showcase-toggle.gif" />
+						<img src="https://picsum.photos/200/300" />
 						<h4>Toggles</h4>
 						<p>
 							Eight playful toggles to toggle on and off for your amusement. Is it possible to use these on your site and still adhere to assessibility rules?
@@ -104,7 +104,7 @@ const Home: NextPageWithLayout = () => {
 					</a>
 					<a className="menu" href="https://en.wikipedia.org/wiki/Tr%E1%BB%8Bnh_C%C3%B4ng_S%C6%A1n" target="_blank">
 						<figure>
-							<img src="#" />
+							<img src="https://picsum.photos/200/300" />
 							<figcaption>See the new and improved menu for Toasty!</figcaption>
 						</figure>
 					</a>
@@ -118,7 +118,7 @@ const Home: NextPageWithLayout = () => {
 					</a>
 					<div className="item-with-image cssgrid-collection">
 						<a className="cssgrid-collection__image" href="#" target="_blank">
-							<img src="#" />
+							<img src="https://picsum.photos/200/300" />
 						</a>
 						<div className="cssgrid-collection__content">
 							<h4>
@@ -202,7 +202,7 @@ const Home: NextPageWithLayout = () => {
 						</a>
 						<a className="workout" href="../html/Workourt.html" target="_blank">
 							<div className="workout__image">
-								<img src="#" alt="Workout" />
+								<img src="https://picsum.photos/200/300" alt="Workout" />
 							</div>
 							<div className="workout__blurb">Always failing to keep track of your workouts? </div>
 							<div className="workout__title">Use this tool!</div>
