@@ -53,7 +53,7 @@ const Home: NextPageWithLayout = () => {
 						</figure>
 					</a>
 					<a className="item-with-image plan span--2 long--2" href="#" target="_blank">
-						<img src="https://picsum.photos/200/300/" />
+						<img src="https://picsum.photos/160/100/" />
 						<h4>Can you get inspired to make your own floor plans?</h4>
 						<div className="multi-column">
 							<p>
@@ -104,12 +104,12 @@ const Home: NextPageWithLayout = () => {
 					</a>
 					<a className="menu" href="https://en.wikipedia.org/wiki/Tr%E1%BB%8Bnh_C%C3%B4ng_S%C6%A1n" target="_blank">
 						<figure>
-							<img src="https://picsum.photos/200/300" />
+							<img src="https://picsum.photos/200/200" />
 							<figcaption>See the new and improved menu for Toasty!</figcaption>
 						</figure>
 					</a>
 					<a className="social" href="../html/Social.html" target="_blank">
-						<img className="#" />
+						<img className="social__image" src="https://picsum.photos/200/100" />
 						<div className="social__subtitle">Dreams</div>
 						<div className="social__content">
 							Scientific research makes clear that sleep is essential at any age. Sleep powers the mind, restores the body, and fortifies virtually every system
@@ -118,7 +118,7 @@ const Home: NextPageWithLayout = () => {
 					</a>
 					<div className="item-with-image cssgrid-collection">
 						<a className="cssgrid-collection__image" href="#" target="_blank">
-							<img src="https://picsum.photos/200/300" />
+							<img src="https://picsum.photos/200/100" />
 						</a>
 						<div className="cssgrid-collection__content">
 							<h4>
@@ -179,7 +179,7 @@ const Home: NextPageWithLayout = () => {
 					<div className="sidebar">
 						<h3 className="title--big">Hot this month</h3>
 						<a className="codepen-item pie" href="#" target="_blank">
-							<img className="#" />
+							<img className="pie__image" src="https://picsum.photos/200/200" />
 							<div className="pie__subtitle">Food </div>
 							<div className="pie__content">
 								<h4>Pies for everyone!</h4>
@@ -202,7 +202,7 @@ const Home: NextPageWithLayout = () => {
 						</a>
 						<a className="workout" href="../html/Workourt.html" target="_blank">
 							<div className="workout__image">
-								<img src="https://picsum.photos/200/300" alt="Workout" />
+								<img src="https://picsum.photos/100/300" alt="Workout" />
 							</div>
 							<div className="workout__blurb">Always failing to keep track of your workouts? </div>
 							<div className="workout__title">Use this tool!</div>
@@ -218,8 +218,10 @@ const Home: NextPageWithLayout = () => {
 					<a href="https://www.instagram.com/tiendat.0802?fbclid=IwAR0IdGvD4IOhXbczBIHTx_5SwCIV_p7f0IiWYcBTXzmyzld2KyxtkfNzviI">
 						<i className="fa fa-instagram"></i>
 					</a>
-					<a href="https://www.youtube.com/channel/UCIRUcbCFXG8m31oREqgTBfw/featured">
-						<i className="fa fa-youtube"></i>
+					<a className="" href="https://www.youtube.com/channel/UCIRUcbCFXG8m31oREqgTBfw/featured">
+						<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+						</svg>
 					</a>
 				</footer>
 			</div>
