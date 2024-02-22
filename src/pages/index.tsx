@@ -40,24 +40,27 @@ const Landing: NextPageWithLayout = () => {
 							only imagine what other amazing discoveries await us in the future.
 						</p>
 					</div>
-					<a className="terrarium" href="/computerVision/object" target="_blank">
+					<a className="terrarium" href="/computerVision/object">
 						<figure>
 							<img src="https://picsum.photos/200/300" />
 							<figcaption></figcaption>
 						</figure>
 					</a>
-					<a className="item-with-image plan span--2 long--2" href="#" target="_blank">
+					<a className="item-with-image plan span--2 long--2" href="#">
 						<img src="https://picsum.photos/160/100/" />
-						<h4>Can you get inspired to make your own floor plans?</h4>
+						<h4>High-Flying Heroics: Quidditch Season Opens to Rousing Start</h4>
 						<div className="multi-column">
 							<p>
-								Making a floor Plan with CSS Grid? Talk about using the wrong tool for the job. But I guess this is what happens when someone isn't happy with
-								any of the floor plans found on Pinterest; she'll start making her own for the eventual home that she will never own. Nevertheless, there's a
-								home office with a large window to look out of pensively during rainy days and a ton of "white space" for the cats to run around.
+								The wizarding world is abuzz with excitement as the new Quidditch season kicks off, promising a series of high-stakes matches and sky-high
+								antics. Fans from all corners of the magical community are flocking to stadiums, eager to support their favorite teams and players. This year’s
+								season opener saw the Gryffindor team clinch a narrow victory against Slytherin, thanks to a spectacular catch of the Golden Snitch by their
+								talented Seeker. The match, which lasted several hours, was filled with daring maneuvers and a few Bludger-related mishaps, keeping spectators
+								on the edge of their seats. As the season progresses, all eyes will be on the skies, watching for the next big play that will go down in
+								Quidditch history.
 							</p>
 						</div>
 					</a>
-					<a className="hogwarts" href="/computerVision/face" target="_blank">
+					<a className="hogwarts" href="/computerVision/face">
 						<div className="hogwarts__title">50% Off Hogwarts Express tickets</div>
 						<div className="hogwarts__image">
 							{' '}
@@ -65,21 +68,21 @@ const Landing: NextPageWithLayout = () => {
 							<img src="https://picsum.photos/200/300" />
 						</div>
 					</a>
-					<a className="item-with-image pasta with-border" href="#" target="_blank">
+					<a className="item-with-image pasta with-border" href="#">
 						<h4>A pasta menu</h4>
 						<p>
 							Everybody loves pasta. It's impossible to not love them, so here are 15 recipes, served with GSAP. Note the easter egg — the menu icon changes
 							according to the pasta that you choose.
 						</p>
 					</a>
-					<a className="item-with-image magazine with-border" href="#" target="_blank">
+					<a className="item-with-image magazine with-border" href="#">
 						<h4>Marvel at a magazine</h4>
 						<p>
 							A tribute of sorts to an era of cool superhero movies, this is a Marvel-themed magazine! Recommended, because it took 45 hours, so you know some
 							serious dedication has been poured into this.
 						</p>
 					</a>
-					<a className="item-with-image style" href="#" target="_blank">
+					<a className="item-with-image style" href="#">
 						<h4>Music heals the soul</h4>
 						<p>
 							Trịnh Công Sơn was born in Buôn Ma Thuột, Đắk Lắk Province, Vietnam, but as a child he lived in the village of Minh Huong in Hương Trà in Thừa
@@ -88,21 +91,21 @@ const Landing: NextPageWithLayout = () => {
 							graduated with the baccalaureate degree.
 						</p>
 					</a>
-					<a className="item-with-image toggles" href="../html/toggle-wrapper.html" target="_blank">
+					<a className="item-with-image toggles" href="#">
 						<img src="https://picsum.photos/200/300" />
-						<h4>Toggles</h4>
+						<h4>Zonko's Shop</h4>
 						<p>
-							Eight playful toggles to toggle on and off for your amusement. Is it possible to use these on your site and still adhere to assessibility rules?
-							No. But there's a really cute dog one you <em>have </em>to see.
+							Zonko's Joke Shop remains a testament to the power of laughter and the enduring charm of the wizarding world. It’s a place where memories are
+							made, friendships are forged, and the magic of a good joke never fades.
 						</p>
 					</a>
-					<a className="menu" href="https://en.wikipedia.org/wiki/Tr%E1%BB%8Bnh_C%C3%B4ng_S%C6%A1n" target="_blank">
+					<a className="menu" href="https://en.wikipedia.org/wiki/Tr%E1%BB%8Bnh_C%C3%B4ng_S%C6%A1n">
 						<figure>
 							<img src="https://picsum.photos/200/200" />
 							<figcaption>See the new and improved menu for Toasty!</figcaption>
 						</figure>
 					</a>
-					<a className="social" href="../html/Social.html" target="_blank">
+					<a className="social" href="../html/Social.html">
 						<img className="social__image" src="https://picsum.photos/200/100" />
 						<div className="social__subtitle">Dreams</div>
 						<div className="social__content">
@@ -111,95 +114,62 @@ const Landing: NextPageWithLayout = () => {
 						</div>
 					</a>
 					<div className="item-with-image cssgrid-collection">
-						<a className="cssgrid-collection__image" href="#" target="_blank">
+						<a className="cssgrid-collection__image" href="#">
 							<img src="https://picsum.photos/200/100" />
 						</a>
 						<div className="cssgrid-collection__content">
 							<h4>
 								{' '}
-								<a href="#" target="_blank">
-									More CSS Grid things like this one. Shelves, coupons and more!{' '}
-								</a>
+								<a href="#">Darkness Rises: Voldemort Returns to Power in Shocking Wizarding World Upheaval </a>
 							</h4>
 							<div className="multi-column-3">
 								<p>
-									Get your fill of more CSS Grid items in this collection. There are a total of 32 pens to date... well, 33, if you count this one too. What can
-									you expect in this collection? The hidden gems, in my totally unbiased opinion, are
-									<a href="../html/toggle-wrapper.html" target="_blank">
-										the recreation of the Pac-Man layout
-									</a>{' '}
-									and{' '}
-									<a href="#" target="_blank">
-										coupons inspired by junk mail
-									</a>
-									. A lot of joke items of things that shouldn't be done in CSS Grid, such as{' '}
-									<a href="#" target="_blank">
-										a shelf
-									</a>
-									?{' '}
-									<a href="#" target="_blank">
-										Bathroom tiles wtf
-									</a>
-									? and{' '}
-									<a href="#" target="_blank">
-										makeup palettes{' '}
-									</a>
-									. If you are a cultured person, you will have a chance to enjoy a couple of pens inspired by{' '}
-									<a href="#" target="_blank">
-										Harry Potter{' '}
-									</a>
-									and{' '}
-									<a href="#" target="_blank">
-										Pokemon.
-									</a>{' '}
-									On the rare occasion that you are looking at this profile for something you can use in production, you really shouldn't. But, there are{' '}
-									<em> some </em>real-world applications, such as{' '}
-									<a href="#" target="_blank">
-										the recipe layout
-									</a>
-									,{' '}
-									<a href="#" target="_blank">
-										the product catalog
-									</a>
-									, and{' '}
-									<a href="#" target="_blank">
-										color palettes for a style guide
-									</a>
-									.
+									In a stunning turn of events that has sent shockwaves throughout the wizarding community, the dark wizard known as Voldemort has reportedly
+									returned. Eyewitness accounts from various reliable sources have confirmed sightings of the Dark Lord, sparking fear and uncertainty among
+									witches and wizards everywhere. The Ministry of Magic has issued an urgent warning, advising all magical beings to exercise extreme caution
+									and to report any suspicious activity. <em>“This is a time for unity and strength”</em> stated a high-ranking Ministry official. “We must come
+									together to ensure the safety and security of our world.” As the wizarding world braces for what may come, many are looking to heroes of the
+									past, hoping for a resurgence of the courage and determination that once defeated Voldemort. The situation remains fluid, and updates will be
+									provided as more information becomes available.
 								</p>
 							</div>
 						</div>
 					</div>
 					<div className="sidebar">
 						<h3 className="title--big">Hot this month</h3>
-						<a className="codepen-item pie" href="#" target="_blank">
+						<a className="codepen-item pie" href="#">
 							<img className="pie__image" src="https://picsum.photos/200/200" />
 							<div className="pie__subtitle">Food </div>
 							<div className="pie__content">
 								<h4>Pies for everyone!</h4>
-								<p>No man is left behind. There's infinite pie with this one div and a repeating background.</p>
+								<p>
+									Experience the Taste of Magic! Indulge in the creamy, frothy delight that has charmed witches, wizards, and even muggles alike. Whether you’re
+									celebrating at The Three Broomsticks or enjoying a cozy night in, Butterbeer is the perfect treat to add a little sparkle to your day.
+								</p>
 							</div>
 						</a>
-						<a className="sidebar-item captcha" href="../html/capcha.html" target="_blank">
+						<a className="sidebar-item captcha" href="../html/capcha.html">
 							<h5>Hogwarts Mystery Magizoology</h5>
 							<p>
-								From Tic Tac Toe to solving meme-based questions, this is a different take on how web captchas should be. "I have not successfully picked out
-								all photos of a truck on the first try. Something's gotta change," says the designer, who has requested to remain anonymous.
+								The Magical Creatures Reserve, nestled deep within the Hogwarts grounds, is now open to students. Thanks to Keeper of Keys and Grounds, Rubeus
+								Hagrid, aspiring Magizoologists can interact with a variety of magical beings. From the mischievous niffler to the elusive bowtruckle, these
+								creatures await adoption by eager students.
 							</p>
 						</a>
-						<a className="sidebar-item slack-ui with-border" href="#" target="_blank">
-							<h5>Slack UI gets reverse engineered</h5>
+						<a className="sidebar-item slack-ui with-border" href="#">
+							<h5>Latest Broom Models Soar at Exclusive Reveal</h5>
 							<p>
-								Another valiant effort to reverse engineer a web app. However, the UI is repurposed to showcase Codepens instead of mock conversations. This is
-								a codepen showcase inception situation.
+								The wizarding world is set to experience the newest advancements in broom technology at the “Brooms of the Future” event. Highlights include the
+								fast and agile Nimbus 2022 and the tech-savvy Nuvem series, offering a seamless flying experience. Enthusiasts can test these brooms, promising
+								to revolutionize magical travel.
 							</p>
 						</a>
-						<a className="workout" href="../html/Workourt.html" target="_blank">
+						<a className="workout" href="../html/Workourt.html">
 							<div className="workout__image">
 								<img src="https://picsum.photos/100/300" alt="Workout" />
 							</div>
-							<div className="workout__blurb">Always failing to keep track of your workouts? </div>
-							<div className="workout__title">Use this tool!</div>
+							<div className="workout__blurb">Experience the latest flying broom model</div>
+							<div className="workout__title">register now</div>
 						</a>
 					</div>
 				</main>
@@ -220,7 +190,7 @@ const Landing: NextPageWithLayout = () => {
 							/>
 						</svg>
 					</a>
-					<a className="relative" target="_blank" href="https://www.linkedin.com/in/dat-tran-4321a9267/">
+					<a className="relative" href="https://www.linkedin.com/in/dat-tran-4321a9267/">
 						<svg
 							className="w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 							xmlns="http://www.w3.org/2000/svg"
@@ -231,7 +201,7 @@ const Landing: NextPageWithLayout = () => {
 						</svg>
 					</a>
 
-					<a className="relative" target="_blank" href="https://github.com/DatTran082">
+					<a className="relative" href="https://github.com/DatTran082">
 						<svg
 							className="w-1/3 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
 							xmlns="http://www.w3.org/2000/svg"
