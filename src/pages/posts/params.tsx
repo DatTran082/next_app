@@ -52,6 +52,7 @@ export default function Params(props: PostListPageProps & NextPageWithLayout) {
 	)
 }
 Params.Layout = DashboardLayout
+
 export async function GetServerSideProps(context: GetServerSidePropsContext) {
 	//serverside
 	//buildtime
