@@ -3,6 +3,7 @@ import { NextPageWithLayout } from '@/models'
 import { CaptureCamera, Knocknock } from '@/components'
 import Link from 'next/link'
 
+
 const Landing: NextPageWithLayout = () => {
 	const router = useRouter()
 
