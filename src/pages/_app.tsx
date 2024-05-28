@@ -2,10 +2,7 @@ import { axiosClient } from '@/client'
 import { EmptyLayout } from '@/layout'
 import { AppPropsWithLayout } from '@/models'
 import '@/styles/globals.css'
-import '@/styles/wraper.css'
 // import '@/styles/wraper.css'
-// import * as serviceWorker from '../services/serviceWorker'
-// import '@/styles/knocknock.css'
 import { SWRConfig } from 'swr'
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
